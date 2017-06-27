@@ -13,13 +13,13 @@ node {
     }
     
     stage('git branches') {
-         sh 'bran=$(git show-branch -a)'
-        env.bran='name'
-    }
+        BRAN = sh (git show-branch -a).trim()
+        echo ${BRAN}
+          }
     stage('parallel_build') {
         parallel(one: {
                   echo "I'm on the first branch!"
-                  echo "$name"
+            echo $ {BRAN}
                  },
                  two: {
                    echo "I'm on the second branch!"
