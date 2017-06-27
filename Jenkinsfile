@@ -2,7 +2,7 @@ node {
     stage('Checkout') {
         git 'https://github.com/bertjan/spring-boot-sample'
         checkout scm
-        name=env.BRANCH_NAME 
+        def name=env.BRANCH_NAME 
     }
 
      stage('Build') {
