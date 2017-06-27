@@ -2,7 +2,6 @@ node {
     stage('Checkout') {
         git 'https://github.com/bertjan/spring-boot-sample'
         checkout scm
-        def name=env.BRANCH_NAME 
     }
 
      stage('Build') {
@@ -12,10 +11,14 @@ node {
     stage('Archive') {
         junit allowEmptyResults: true, testResults: '**/target/**/TEST*.xml'
     }
-
+    
+    stage('git branches') {
+         sh 'bran=$(git show-brnach -a)'
+        env.bran='name'
     stage('parallel_build') {
         parallel(one: {
                   echo "I'm on the first branch!"
+                  echo '$name'
                  },
                  two: {
                    echo "I'm on the second branch!"
