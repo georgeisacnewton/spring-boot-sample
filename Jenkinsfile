@@ -13,7 +13,12 @@ node {
     }
     
     stage('git branches') {
-        BRAN = sh (git show-branch -a).trim()
+       BRAN = sh (
+      script: """
+        git show-branch -a
+      """,
+      returnStdout: true
+    ).trim()
         echo ${BRAN}
           }
     stage('parallel_build') {
