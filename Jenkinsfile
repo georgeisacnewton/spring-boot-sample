@@ -13,7 +13,7 @@ node {
     }
     
     stage('git branches') {
-         sh 'bran=$(git show-brnach -a)'
+         sh 'bran=$(git show-branch -a)'
         env.bran='name'
     }
     stage('parallel_build') {
