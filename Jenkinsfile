@@ -16,7 +16,6 @@ node {
     stage('parallel_build') {
         parallel(one: {
                   echo "I'm on the first branch!"
-                  echo "$name"
                  },
                  two: {
                    echo "I'm on the second branch!"
